@@ -67,6 +67,7 @@ function draw() {
 }
 function menu() {
   background(bus)
+  gobc=0
   cont=0
   if(jog==1){
     jog=0
@@ -142,6 +143,7 @@ function menu() {
        rect(210,180,260,40, 20)
       if(mouseIsPressed){
         nivel=1
+        fase=1
       }
 }
     if(mouseX > 210 && mouseX < 210+260 && mouseY > 230 && mouseY < 230+40 && tl ==0){   
@@ -149,6 +151,7 @@ function menu() {
        rect(210,230,260,40, 20)
       if(mouseIsPressed){
         nivel=2
+        fase=1
       }
      }
     if(mouseX > 210 && mouseX < 210+260 && mouseY > 280 && mouseY < 280+40 && tl ==0){   
@@ -156,6 +159,7 @@ function menu() {
        rect(210,280,260,40, 20)
       if(mouseIsPressed){
         nivel=3
+        fase=1
       }
      }
     fill(245)
@@ -302,7 +306,7 @@ function jogo(){
   cont=cont+1
   sec=parseInt(cont/30)
   money3=money2.toFixed(2)
-  if(money3==troco && sec== 4){
+  if(money3==troco && sec== 1){
     fala= "Oi, bom dia"
     fase=fase+1
     cont=0
