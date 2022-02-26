@@ -1,4 +1,5 @@
 var tl, op,x
+var per = []
 // condição= 1 normal
 // condição= 2 estudante
 // condição= 3 idoso
@@ -20,6 +21,8 @@ fala="Oi, bom dia!"
 cont=0
 troco=1
 nivel=1
+seg=0
+
 function preload() {
   busbc = loadImage('assets/jogo/busbc.jpg')
   bus = loadImage('assets/menu/bus.gif')
@@ -39,16 +42,16 @@ function preload() {
   moeda25 = loadImage('assets/jogo/25centavos.png')
   foto= loadImage('assets/menu/foto.jpg')
   core = loadImage('assets/jogo/Core.png')
-  per1 = loadImage('assets/jogo/Per1.png')
-  per2 = loadImage('assets/jogo/Per2.png')
-  per3 = loadImage('assets/jogo/Per3.png')
-  per4 = loadImage('assets/jogo/Per4.png')
-  per5 = loadImage('assets/jogo/Per5.png')
-  per6 = loadImage('assets/jogo/Per6.png')
-  per7 = loadImage('assets/jogo/Per7.png')
-  per8 = loadImage('assets/jogo/Per8.png')
-  per9 = loadImage('assets/jogo/Per9.png')
-  per10 = loadImage('assets/jogo/Per10.png')
+  per[1] = loadImage('assets/jogo/Per1.png')
+  per[2] = loadImage('assets/jogo/Per2.png')
+  per[3] = loadImage('assets/jogo/Per3.png')
+  per[4] = loadImage('assets/jogo/Per4.png')
+  per[5] = loadImage('assets/jogo/Per5.png')
+  per[6] = loadImage('assets/jogo/Per6.png')
+  per[7] = loadImage('assets/jogo/Per7.png')
+  per[8] = loadImage('assets/jogo/Per8.png')
+  per[9] = loadImage('assets/jogo/Per9.png')
+  per[10] = loadImage('assets/jogo/Per10.png')
 }
 function setup() {
   createCanvas(640, 480);
@@ -295,7 +298,7 @@ if(mouseX > 200 && mouseX < 200+260 && mouseY > 330 && mouseY < 330+40 && tl == 
   }
 }
 function jogo(){
-  console.log(jog)
+  console.log(seg)
   cont=cont+1
   sec=parseInt(cont/30)
   money3=money2.toFixed(2)
@@ -378,7 +381,7 @@ function jogo(){
       troco=money-pass
     }
     if(condicao==2){
-      troco=money-(pass/2)
+      troco=parseFloat(money-(pass/2))
     }
     if(condicao == 3){
       troco=money
@@ -387,87 +390,12 @@ function jogo(){
   troco=money-pass
 } 
 // Controle de personagens e falas
-  if(fase == 1 ){
-    image(per1, l, a, l1, a1)
-    rect(420,180,210,90,20,15,10,5)
-    text(fala,430,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
-  if(fase == 2){
-    image(per2, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
-  if(fase == 3){
-    image(per3, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
-  if(fase == 4){
-    image(per4, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
-  if(fase == 5){
-    image(per5, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
-  if(fase == 6){
-    image(per6, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
-  if(fase == 7){
-    image(per7, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
-  if(fase == 8){
-    image(per8, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
-  if(fase == 9){
-    image(per9, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-    
-  }
-  if(fase == 10){
-    image(per10, l, a, l1, a1)
-    rect(450,180,180,90,20,15,10,5)
-    text(fala,460,230)
-    if(sec>9){
-      fala="Te dei "+money+" reais!"
-    }
-  }
+image(per[fase], l, a, l1, a1)
+rect(420,180,210,90,20,15,10,5)
+text(fala,430,230)
+if(sec>9){
+  fala="Te dei "+money+" reais!"
+}
 // Formatação da fase
   fill(0, 150)
   rect(50, 50 , 550, 50,20) 
@@ -500,7 +428,7 @@ function jogo(){
     textSize(20)
     stroke(51)
     fill(245)
-    text("idoso",190, 125)
+    text("Idoso",190, 125)
   }
   }
   noErase()
@@ -559,8 +487,8 @@ function jogo(){
       tl=0
     }
   }
-}
-// Outros sistemas    
+    }
+// Outros sistemas
   if(mouseX > 5 && mouseX < 5+50 && mouseY > 10 && mouseY < 10+50 && tl == 1){
     image(conf02, 5, 10, 50, 50)
 }
